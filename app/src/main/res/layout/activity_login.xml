@@ -37,7 +37,7 @@
         android:id="@+id/txt_email"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="Email"
         android:textColor="#000000"
@@ -47,30 +47,48 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_subtitle" />
 
-    <EditText
-        android:id="@+id/edt_email"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_email"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/shape_edittext_default"
-        android:drawableStart="@drawable/ic_email"
-        android:drawablePadding="10dp"
-        android:fontFamily="@font/poppins_regular"
+        android:layout_height="wrap_content"
         android:hint="Enter your email"
-        android:paddingStart="14dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:textSize="14sp"
-        android:inputType="textEmailAddress"
+        app:boxBackgroundColor="#F8F8F8"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:boxStrokeColor="@color/text_input_stroke"
+        app:boxStrokeWidth="1dp"
+        app:boxStrokeWidthFocused="2dp"
+        app:hintTextColor="@color/text_input_hint"
+        app:startIconDrawable="@drawable/ic_email"
+        app:startIconTint="@color/text_input_icon"
+        app:errorEnabled="true"
+        app:errorTextColor="#FF0000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_email" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_email">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_email"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:fontFamily="@font/poppins_regular"
+            android:inputType="textEmailAddress"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/txt_password"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="Password"
         android:textColor="#000000"
@@ -78,35 +96,53 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_email" />
+        app:layout_constraintTop_toBottomOf="@+id/til_email" />
 
-    <EditText
-        android:id="@+id/edt_password"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_password"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/shape_edittext_default"
+        android:layout_height="wrap_content"
         android:hint="Enter your password"
-        android:inputType="textPassword"
-        android:drawableStart="@drawable/ic_lock"
-        android:drawablePadding="12dp"
-        android:drawableEnd="@drawable/ic_hideeye"
-        android:paddingStart="14dp"
-        android:paddingEnd="16dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:textSize="14sp"
-        android:fontFamily="@font/poppins_regular"
+        app:boxBackgroundColor="#F8F8F8"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:boxStrokeColor="@color/text_input_stroke"
+        app:boxStrokeWidth="1dp"
+        app:boxStrokeWidthFocused="2dp"
+        app:endIconMode="password_toggle"
+        app:endIconTint="@color/text_input_icon"
+        app:errorEnabled="true"
+        app:errorTextColor="#FF0000"
+        app:hintTextColor="@color/text_input_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_password" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_password"
+        app:startIconDrawable="@drawable/ic_lock"
+        app:startIconTint="@color/text_input_icon">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_password"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:fontFamily="@font/poppins_regular"
+            android:inputType="textPassword"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/txt_forgotpw"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/poppins_semibold"
+        android:layout_marginTop="-6dp"
+        android:fontFamily="@font/poppins_medium"
         android:text="Forgot Password"
         android:textAlignment="textEnd"
         android:textColor="#2C4EEF"
@@ -114,7 +150,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_password" />
+        app:layout_constraintTop_toBottomOf="@+id/til_password" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_login"
@@ -125,7 +161,9 @@
         android:background="@drawable/shape_button_primary"
         android:text="Login"
         android:textColor="#FFFFFF"
+        android:textSize="14sp"
         app:backgroundTint="@null"
+        app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
@@ -145,21 +183,21 @@
             android:id="@+id/txt_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
             android:text="Don't have an account?"
             android:textColor="@android:color/black"
-            android:textSize="14sp"
-            android:fontFamily="@font/poppins_medium" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/txt_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/poppins_regular"
             android:text="Register"
             android:textColor="@color/md_theme_light_primary"
-            android:textStyle="bold"
             android:textSize="14sp"
-            android:fontFamily="@font/poppins_medium"
-            android:layout_marginStart="8dp" />
+            android:textStyle="bold" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

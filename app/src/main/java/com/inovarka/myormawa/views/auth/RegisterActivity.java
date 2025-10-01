@@ -1,179 +1,172 @@
 package com.inovarka.myormawa.views.auth;
 
-import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
-import android.view.MotionEvent;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Patterns;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
+import android.view.WindowManager;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.core.content.ContextCompat;
 
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.inovarka.myormawa.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText editNim, editFullname, editEmail, editPassword;
-    private Spinner spinnerProdi;
-    private Button btnRegister;
-    private String selectedProdi = "";
-    private boolean isPasswordVisible = false;
+    private TextInputLayout tilNim, tilFullname, tilEmail, tilProdi, tilPassword;
+    private TextInputEditText edtNim, edtFullname, edtEmail, edtProdi, edtPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_register);
 
-        setupWindowInsets();
-        initializeViews();
-        setupSpinner();
-        setupPasswordToggle();
-        setupRegisterButton();
+        setWhiteStatusBar();
+        setContentView(R.layout.activity_register);
+        initViews();
     }
 
-    private void setupWindowInsets() {
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+    private void setWhiteStatusBar() {
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, android.R.color.white));
+
+        // Set ikon status bar menjadi gelap (untuk background putih)
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        );
+    }
+
+    private void initViews() {
+        tilNim = findViewById(R.id.til_nim);
+        tilFullname = findViewById(R.id.til_fullname);
+        tilEmail = findViewById(R.id.til_email);
+        tilProdi = findViewById(R.id.til_prodi);
+        tilPassword = findViewById(R.id.til_password);
+
+        edtNim = findViewById(R.id.edt_nim);
+        edtFullname = findViewById(R.id.edt_fullname);
+        edtEmail = findViewById(R.id.edt_email);
+        edtProdi = findViewById(R.id.edt_prodi);
+        edtPassword = findViewById(R.id.edt_password);
+
+        // Auto-clear errors saat user mengetik
+        edtNim.addTextChangedListener(createErrorClearer(tilNim));
+        edtFullname.addTextChangedListener(createErrorClearer(tilFullname));
+        edtEmail.addTextChangedListener(createErrorClearer(tilEmail));
+        edtProdi.addTextChangedListener(createErrorClearer(tilProdi));
+        edtPassword.addTextChangedListener(createErrorClearer(tilPassword));
+
+        // Click listeners
+        findViewById(R.id.btn_register).setOnClickListener(v -> handleRegister());
+        findViewById(R.id.txt_login).setOnClickListener(v -> {
+            // Kembali ke halaman login
+            startActivity(new Intent(this, LoginActivity.class));
+            finish(); // Tutup halaman register
         });
     }
 
-    private void initializeViews() {
-        editNim = findViewById(R.id.edt_nim);
-        editFullname = findViewById(R.id.edt_fullname);
-        editEmail = findViewById(R.id.edt_emailreg);
-        spinnerProdi = findViewById(R.id.spin_prodi);
-        editPassword = findViewById(R.id.edt_passwordreg);
-        btnRegister = findViewById(R.id.btn_register);
-    }
-
-    private void setupSpinner() {
-        String[] items = getResources().getStringArray(R.array.spinner_prodi);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                this, R.layout.item_spinner_selected, items) {
+    private TextWatcher createErrorClearer(TextInputLayout layout) {
+        return new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
             @Override
-            public boolean isEnabled(int position) {
-                return position != 0;
-            }
+            public void afterTextChanged(Editable s) {}
 
             @Override
-            public View getDropDownView(int position, View convertView, android.view.ViewGroup parent) {
-                View view = super.getDropDownView(position, convertView, parent);
-                TextView tv = (TextView) view;
-                tv.setTextColor(position == 0 ? 0xFF999999 : 0xFF000000);
-                return view;
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                layout.setError(null);
             }
         };
-
-        adapter.setDropDownViewResource(R.layout.item_spinner_dropdown);
-        spinnerProdi.setAdapter(adapter);
-
-        spinnerProdi.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (view instanceof TextView) {
-                    ((TextView) view).setTextColor(position == 0 ? 0xFF999999 : 0xFF000000);
-                }
-                selectedProdi = position > 0 ? parent.getItemAtPosition(position).toString() : "";
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                selectedProdi = "";
-            }
-        });
-    }
-
-    @SuppressLint("ClickableViewAccessibility")
-    private void setupPasswordToggle() {
-        editPassword.setOnTouchListener((v, event) -> {
-            if (event.getAction() == MotionEvent.ACTION_UP) {
-                int iconWidth = editPassword.getCompoundDrawables()[2].getBounds().width();
-                if (event.getRawX() >= (editPassword.getRight() - iconWidth - 50)) {
-                    togglePasswordVisibility();
-                    return true;
-                }
-            }
-            return false;
-        });
-    }
-
-    private void togglePasswordVisibility() {
-        if (isPasswordVisible) {
-            editPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-            editPassword.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_lock, 0, R.drawable.ic_hideeye, 0);
-        } else {
-            editPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-            editPassword.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_lock, 0, R.drawable.ic_showeye, 0);
-        }
-        isPasswordVisible = !isPasswordVisible;
-        editPassword.setSelection(editPassword.getText().length());
-    }
-
-    private void setupRegisterButton() {
-        btnRegister.setOnClickListener(v -> handleRegister());
     }
 
     private void handleRegister() {
-        if (!validateForm()) return;
+        if (validateInputs()) {
+            String nim = edtNim.getText().toString().trim();
+            String fullname = edtFullname.getText().toString().trim();
+            String email = edtEmail.getText().toString().trim();
+            String prodi = edtProdi.getText().toString().trim();
+            String password = edtPassword.getText().toString().trim();
 
-        String nim = editNim.getText().toString().trim();
-        String fullname = editFullname.getText().toString().trim();
-        String email = editEmail.getText().toString().trim();
-        String password = editPassword.getText().toString().trim();
+            // TODO: Implement API call untuk register
+            Toast.makeText(this, "Registration successful!", Toast.LENGTH_SHORT).show();
 
-        // TODO: Implement register logic here (API call, database insert, etc.)
-        Toast.makeText(this, "Registration successful!", Toast.LENGTH_SHORT).show();
+            // Setelah berhasil register, kembali ke halaman login
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
+        }
     }
 
-    private boolean validateForm() {
-        if (isEmpty(editNim, "NIM is required")) return false;
-        if (isEmpty(editFullname, "Full name is required")) return false;
-        if (isEmpty(editEmail, "Email is required")) return false;
+    private boolean validateInputs() {
+        String nim = edtNim.getText().toString().trim();
+        String fullname = edtFullname.getText().toString().trim();
+        String email = edtEmail.getText().toString().trim();
+        String prodi = edtProdi.getText().toString().trim();
+        String password = edtPassword.getText().toString().trim();
 
-        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(editEmail.getText().toString().trim()).matches()) {
-            editEmail.requestFocus();
-            editEmail.setError("Please enter a valid email");
+        // Validasi NIM
+        if (nim.isEmpty()) {
+            tilNim.setError("NIM is required");
+            edtNim.requestFocus();
             return false;
         }
 
-        if (selectedProdi.isEmpty()) {
-            Toast.makeText(this, "Please select a study program", Toast.LENGTH_SHORT).show();
+        if (nim.length() < 8) {
+            tilNim.setError("NIM must be at least 8 digits");
+            edtNim.requestFocus();
             return false;
         }
 
-        if (isEmpty(editPassword, "Password is required")) return false;
+        // Validasi Fullname
+        if (fullname.isEmpty()) {
+            tilFullname.setError("Full name is required");
+            edtFullname.requestFocus();
+            return false;
+        }
 
-        if (editPassword.getText().toString().trim().length() < 6) {
-            editPassword.requestFocus();
-            editPassword.setError("Password must be at least 6 characters");
+        if (fullname.length() < 3) {
+            tilFullname.setError("Full name must be at least 3 characters");
+            edtFullname.requestFocus();
+            return false;
+        }
+
+        // Validasi Email
+        if (email.isEmpty()) {
+            tilEmail.setError("Email is required");
+            edtEmail.requestFocus();
+            return false;
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            tilEmail.setError("Invalid email format");
+            edtEmail.requestFocus();
+            return false;
+        }
+
+        // Validasi Program Studi
+        if (prodi.isEmpty()) {
+            tilProdi.setError("Program study is required");
+            edtProdi.requestFocus();
+            return false;
+        }
+
+        // Validasi Password
+        if (password.isEmpty()) {
+            tilPassword.setError("Password is required");
+            edtPassword.requestFocus();
+            return false;
+        }
+
+        if (password.length() < 8) {
+            tilPassword.setError("Password must be at least 8 characters");
+            edtPassword.requestFocus();
             return false;
         }
 
         return true;
-    }
-
-    private boolean isEmpty(EditText editText, String errorMessage) {
-        if (editText.getText().toString().trim().isEmpty()) {
-            editText.requestFocus();
-            editText.setError(errorMessage);
-            return true;
-        }
-        return false;
     }
 }

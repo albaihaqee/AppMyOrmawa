@@ -5,10 +5,11 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".views.auth.RegisterActivity">
 
     <TextView
-        android:id="@+id/txt_title"
+        android:id="@+id/txt_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
@@ -21,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txt_subtitlereg"
+        android:id="@+id/txt_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_medium"
@@ -30,198 +31,311 @@
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_title" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_register" />
 
     <TextView
         android:id="@+id/txt_nim"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="NIM"
         android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_subtitlereg" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_subtitle" />
 
-    <EditText
-        android:id="@+id/edt_nim"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_nim"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/shape_edittext_default"
-        android:drawableStart="@drawable/ic_card"
-        android:drawablePadding="10dp"
-        android:fontFamily="@font/poppins_regular"
-        android:hint="Enter your nim"
-        android:inputType="text"
-        android:paddingStart="14dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:textSize="14sp"
+        android:layout_height="wrap_content"
+        android:hint="Enter your NIM"
+        app:boxBackgroundColor="#F8F8F8"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:boxStrokeColor="@color/text_input_stroke"
+        app:boxStrokeWidth="1dp"
+        app:boxStrokeWidthFocused="2dp"
+        app:hintTextColor="@color/text_input_hint"
+        app:startIconDrawable="@drawable/ic_card"
+        app:startIconTint="@color/text_input_icon"
+        app:errorEnabled="true"
+        app:errorTextColor="#FF0000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_nim" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_nim">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_nim"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:fontFamily="@font/poppins_regular"
+            android:inputType="text"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/txt_fullname"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="Nama Lengkap"
         android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_nim" />
+        app:layout_constraintTop_toBottomOf="@+id/til_nim" />
 
-    <EditText
-        android:id="@+id/edt_fullname"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/shape_edittext_default"
-        android:drawableStart="@drawable/ic_person"
-        android:drawablePadding="10dp"
-        android:fontFamily="@font/poppins_regular"
-        android:hint="Enter your fullname"
-        android:inputType="text"
-        android:paddingStart="14dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_fullname" />
-
-    <TextView
-        android:id="@+id/txt_emailreg"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_fullname"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:hint="Enter your fullname"
+        app:boxBackgroundColor="#F8F8F8"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:boxStrokeColor="@color/text_input_stroke"
+        app:boxStrokeWidth="1dp"
+        app:boxStrokeWidthFocused="2dp"
+        app:hintTextColor="@color/text_input_hint"
+        app:startIconDrawable="@drawable/ic_person"
+        app:startIconTint="@color/text_input_icon"
+        app:errorEnabled="true"
+        app:errorTextColor="#FF0000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_fullname">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_fullname"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:fontFamily="@font/poppins_regular"
+            android:inputType="textPersonName|textCapWords"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/txt_email"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="Email"
         android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_fullname" />
+        app:layout_constraintTop_toBottomOf="@+id/til_fullname" />
 
-    <EditText
-        android:id="@+id/edt_emailreg"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_email"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/shape_edittext_default"
-        android:drawableStart="@drawable/ic_email"
-        android:drawablePadding="10dp"
-        android:fontFamily="@font/poppins_regular"
+        android:layout_height="wrap_content"
         android:hint="Enter your email"
-        android:paddingStart="14dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:textSize="14sp"
-        android:inputType="textEmailAddress"
+        app:boxBackgroundColor="#F8F8F8"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:boxStrokeColor="@color/text_input_stroke"
+        app:boxStrokeWidth="1dp"
+        app:boxStrokeWidthFocused="2dp"
+        app:hintTextColor="@color/text_input_hint"
+        app:startIconDrawable="@drawable/ic_email"
+        app:startIconTint="@color/text_input_icon"
+        app:errorEnabled="true"
+        app:errorTextColor="#FF0000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_emailreg" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_email">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_email"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:fontFamily="@font/poppins_regular"
+            android:inputType="textEmailAddress"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/txt_prodi"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="Program Studi"
         android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_emailreg" />
+        app:layout_constraintTop_toBottomOf="@+id/til_email" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_prodi"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/shape_edittext_default"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:hint="Enter your program study"
+        app:boxBackgroundColor="#F8F8F8"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:boxStrokeColor="@color/text_input_stroke"
+        app:boxStrokeWidth="1dp"
+        app:boxStrokeWidthFocused="2dp"
+        app:hintTextColor="@color/text_input_hint"
+        app:startIconDrawable="@drawable/ic_graduation"
+        app:startIconTint="@color/text_input_icon"
+        app:errorEnabled="true"
+        app:errorTextColor="#FF0000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_prodi">
 
-        <!-- Icon graduation -->
-        <ImageView
-            android:id="@+id/ic_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            android:src="@drawable/ic_graduation" />
-
-        <!-- Spinner -->
-        <Spinner
-            android:id="@+id/spin_prodi"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:paddingEnd="8dp"
-            android:spinnerMode="dropdown" />
-    </LinearLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_prodi"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:fontFamily="@font/poppins_regular"
+            android:inputType="text"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/txt_passwordreg"
+        android:id="@+id/txt_password"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="Password"
         android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/til_prodi" />
 
-    <EditText
-        android:id="@+id/edt_passwordreg"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_password"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/shape_edittext_default"
+        android:layout_height="wrap_content"
         android:hint="Enter your password"
-        android:inputType="textPassword"
-        android:drawableStart="@drawable/ic_lock"
-        android:drawablePadding="12dp"
-        android:drawableEnd="@drawable/ic_hideeye"
-        android:paddingStart="14dp"
-        android:paddingEnd="16dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:textSize="14sp"
-        android:fontFamily="@font/poppins_regular"
+        app:boxBackgroundColor="#F8F8F8"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:boxStrokeColor="@color/text_input_stroke"
+        app:boxStrokeWidth="1dp"
+        app:boxStrokeWidthFocused="2dp"
+        app:hintTextColor="@color/text_input_hint"
+        app:startIconDrawable="@drawable/ic_lock"
+        app:startIconTint="@color/text_input_icon"
+        app:endIconMode="password_toggle"
+        app:endIconTint="@color/text_input_icon"
+        app:errorEnabled="true"
+        app:errorTextColor="#FF0000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_passwordreg" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_password">
 
-    <Button
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_password"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:fontFamily="@font/poppins_regular"
+            android:inputType="textPassword"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_register"
         android:layout_width="350dp"
         android:layout_height="50dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/poppins_medium"
         android:background="@drawable/shape_button_primary"
         android:text="Register"
         android:textColor="#FFFFFF"
+        android:textSize="14sp"
         app:backgroundTint="@null"
+        app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_passwordreg" />
+        app:layout_constraintTop_toBottomOf="@+id/til_password" />
 
+    <LinearLayout
+        android:id="@+id/linearLayoutAuthPrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_register">
+
+        <TextView
+            android:id="@+id/txt_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Already have an account?"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_regular" />
+
+        <TextView
+            android:id="@+id/txt_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:textColor="@color/md_theme_light_primary"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
