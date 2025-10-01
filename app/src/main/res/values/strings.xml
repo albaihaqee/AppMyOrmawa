@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">myormawa</string>
+
+    <string-array name="spinner_prodi">
+        <item>Choose Study Program</item>
+        <item>Teknik Komputer</item>
+        <item>Teknik Informatika</item>
+        <item>Teknologi Rekayasa Komputer</item>
+        <item> Manajemen Informatika</item>
+    </string-array>
+
 </resources>
