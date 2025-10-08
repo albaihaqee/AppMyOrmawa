@@ -54,6 +54,8 @@ public class LoginActivity extends AppCompatActivity {
         findViewById(R.id.btn_login).setOnClickListener(v -> handleLogin());
         findViewById(R.id.txt_register).setOnClickListener(v ->
                 startActivity(new Intent(this, RegisterActivity.class)));
+        findViewById(R.id.txt_forgotpw).setOnClickListener(v ->
+                startActivity(new Intent(this, ForgotPasswordActivity.class)));
     }
 
     private TextWatcher createErrorClearer(TextInputLayout layout) {

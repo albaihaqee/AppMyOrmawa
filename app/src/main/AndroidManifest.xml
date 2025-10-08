@@ -12,9 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Myormawa">
 
-        <!-- LAUNCHER - Entry point aplikasi -->
+        <!-- LAUNCHER - TEMPORARY FOR TESTING -->
         <activity
-            android:name=".views.splash.SplashActivity"
+            android:name=".views.auth.SetNewPasswordActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,23 +22,41 @@
             </intent-filter>
         </activity>
 
-        <!-- Activity lainnya -->
+        <!-- Original Splash (disabled for testing) -->
+        <activity
+            android:name=".views.splash.SplashActivity"
+            android:exported="false"
+            android:noHistory="true" />
+
+        <!-- Onboarding -->
         <activity
             android:name=".views.onboarding.OnboardingActivity"
             android:exported="false" />
 
+        <!-- Authentication -->
         <activity
-            android:name=".views.auth.SelectionRoleActivity"
+            android:name=".views.auth.RoleSelectionActivity"
             android:exported="false" />
-
         <activity
             android:name=".views.auth.LoginActivity"
             android:exported="false" />
-
         <activity
             android:name=".views.auth.RegisterActivity"
             android:exported="false" />
+        <activity
+            android:name=".views.auth.ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.auth.VerificationCodeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.auth.ResetPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.auth.ResetPasswordSuccessActivity"
+            android:exported="false" />
 
+        <!-- Main App -->
         <activity
             android:name=".MainActivity"
             android:exported="false" />

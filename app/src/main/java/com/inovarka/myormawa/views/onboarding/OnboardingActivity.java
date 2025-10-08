@@ -13,7 +13,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.button.MaterialButton;
 import com.inovarka.myormawa.R;
-import com.inovarka.myormawa.views.auth.SelectionRoleActivity;
+import com.inovarka.myormawa.views.auth.RoleSelectionActivity;
 
 public class OnboardingActivity extends AppCompatActivity {
 
@@ -147,7 +147,7 @@ public class OnboardingActivity extends AppCompatActivity {
     }
 
     private void finishOnboarding() {
-        startActivity(new Intent(this, SelectionRoleActivity.class));
+        startActivity(new Intent(this, RoleSelectionActivity.class));
         finish();
     }
 

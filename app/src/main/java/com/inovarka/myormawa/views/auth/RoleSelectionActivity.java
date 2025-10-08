@@ -11,7 +11,7 @@ import androidx.core.content.ContextCompat;
 import com.google.android.material.button.MaterialButton;
 import com.inovarka.myormawa.R;
 
-public class SelectionRoleActivity extends AppCompatActivity {
+public class RoleSelectionActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
