@@ -12,21 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Myormawa">
 
-        <!-- LAUNCHER - TEMPORARY FOR TESTING -->
+        <!-- LAUNCHER -->
         <activity
-            android:name=".views.auth.SetNewPasswordActivity"
-            android:exported="true">
+            android:name=".views.splash.SplashActivity"
+            android:exported="true"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!-- Original Splash (disabled for testing) -->
-        <activity
-            android:name=".views.splash.SplashActivity"
-            android:exported="false"
-            android:noHistory="true" />
 
         <!-- Onboarding -->
         <activity
@@ -51,6 +46,9 @@
             android:exported="false" />
         <activity
             android:name=".views.auth.ResetPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.auth.SetNewPasswordActivity"
             android:exported="false" />
         <activity
             android:name=".views.auth.ResetPasswordSuccessActivity"
