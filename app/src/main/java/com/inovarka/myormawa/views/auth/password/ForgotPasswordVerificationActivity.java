@@ -1,4 +1,4 @@
-package com.inovarka.myormawa.views.auth;
+package com.inovarka.myormawa.views.auth.password;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,10 +19,10 @@ import androidx.core.content.ContextCompat;
 
 import com.inovarka.myormawa.R;
 
-public class VerificationCodeActivity extends AppCompatActivity {
+public class ForgotPasswordVerificationActivity extends AppCompatActivity {
 
-    private EditText[] codeInputs = new EditText[6];
-    private TextView txtEmailDisplay, txtEmailInfo;
+    private EditText[] codeInputs;
+    private TextView txtEmailInfo;
     private ProgressBar progressLoading;
     private String email;
     private boolean isVerifying = false;
@@ -31,7 +31,7 @@ public class VerificationCodeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setWhiteStatusBar();
-        setContentView(R.layout.activity_verification_code);
+        setContentView(R.layout.activity_forgot_password_verification);
 
         email = getIntent().getStringExtra("email");
         initViews();
@@ -51,20 +51,20 @@ public class VerificationCodeActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        txtEmailDisplay = findViewById(R.id.txt_email_display);
         txtEmailInfo = findViewById(R.id.txt_email_info);
         progressLoading = findViewById(R.id.progress_loading);
 
-        codeInputs[0] = findViewById(R.id.edt_code_1);
-        codeInputs[1] = findViewById(R.id.edt_code_2);
-        codeInputs[2] = findViewById(R.id.edt_code_3);
-        codeInputs[3] = findViewById(R.id.edt_code_4);
-        codeInputs[4] = findViewById(R.id.edt_code_5);
-        codeInputs[5] = findViewById(R.id.edt_code_6);
+        codeInputs = new EditText[]{
+                findViewById(R.id.edt_code_1),
+                findViewById(R.id.edt_code_2),
+                findViewById(R.id.edt_code_3),
+                findViewById(R.id.edt_code_4),
+                findViewById(R.id.edt_code_5),
+                findViewById(R.id.edt_code_6)
+        };
 
         if (email != null) {
-            txtEmailDisplay.setText(email);
-            txtEmailInfo.setText("We sent a reset link to");
+            txtEmailInfo.setText(email);
         }
 
         findViewById(R.id.btn_back).setOnClickListener(v -> finish());
@@ -75,36 +75,42 @@ public class VerificationCodeActivity extends AppCompatActivity {
     private void setupCodeInputs() {
         for (int i = 0; i < codeInputs.length; i++) {
             final int index = i;
-
-            codeInputs[i].addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    if (s.length() == 1 && index < codeInputs.length - 1) {
-                        codeInputs[index + 1].requestFocus();
-                    } else if (s.length() == 1 && index == codeInputs.length - 1) {
-                        if (isAllFieldsFilled()) {
-                            autoVerifyCode();
-                        }
-                    }
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {}
-            });
-
-            codeInputs[i].setOnKeyListener((v, keyCode, event) -> {
-                if (keyCode == KeyEvent.KEYCODE_DEL && event.getAction() == KeyEvent.ACTION_DOWN) {
-                    if (codeInputs[index].getText().toString().isEmpty() && index > 0) {
-                        codeInputs[index - 1].requestFocus();
-                        codeInputs[index - 1].setText("");
-                    }
-                }
-                return false;
-            });
+            codeInputs[i].addTextChangedListener(createCodeWatcher(index));
+            codeInputs[i].setOnKeyListener(createKeyListener(index));
         }
+    }
+
+    private TextWatcher createCodeWatcher(int index) {
+        return new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.length() == 1) {
+                    if (index < codeInputs.length - 1) {
+                        codeInputs[index + 1].requestFocus();
+                    } else if (isAllFieldsFilled()) {
+                        autoVerifyCode();
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        };
+    }
+
+    private View.OnKeyListener createKeyListener(int index) {
+        return (v, keyCode, event) -> {
+            if (keyCode == KeyEvent.KEYCODE_DEL && event.getAction() == KeyEvent.ACTION_DOWN) {
+                if (codeInputs[index].getText().toString().isEmpty() && index > 0) {
+                    codeInputs[index - 1].requestFocus();
+                    codeInputs[index - 1].setText("");
+                }
+            }
+            return false;
+        };
     }
 
     private void resetCodeInputs() {
@@ -129,46 +135,41 @@ public class VerificationCodeActivity extends AppCompatActivity {
 
     private void autoVerifyCode() {
         if (isVerifying) return;
+        verifyCode();
+    }
 
+    private void handleVerifyCode() {
+        if (!isAllFieldsFilled()) {
+            Toast.makeText(this, "Please enter complete verification code", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        verifyCode();
+    }
+
+    private void verifyCode() {
         setCodeInputsEnabled(false);
         progressLoading.setVisibility(View.VISIBLE);
         findViewById(R.id.btn_verify_code).setEnabled(false);
         isVerifying = true;
 
+        String code = getCodeFromInputs();
+
+        // TODO: Implement API call to verify code
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            verifyCodeSuccess(code);
+        }, 1500);
+    }
+
+    private String getCodeFromInputs() {
         StringBuilder code = new StringBuilder();
         for (EditText input : codeInputs) {
             code.append(input.getText().toString().trim());
         }
-
-        new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            verifyCodeSuccess(code.toString());
-        }, 1500);
-    }
-
-    private void handleVerifyCode() {
-        StringBuilder code = new StringBuilder();
-        for (EditText input : codeInputs) {
-            String digit = input.getText().toString().trim();
-            if (digit.isEmpty()) {
-                Toast.makeText(this, "Please enter complete verification code", Toast.LENGTH_SHORT).show();
-                return;
-            }
-            code.append(digit);
-        }
-
-        setCodeInputsEnabled(false);
-        progressLoading.setVisibility(View.VISIBLE);
-        findViewById(R.id.btn_verify_code).setEnabled(false);
-        isVerifying = true;
-
-        new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            verifyCodeSuccess(code.toString());
-        }, 1500);
+        return code.toString();
     }
 
     private void verifyCodeSuccess(String code) {
         progressLoading.setVisibility(View.GONE);
-
         Intent intent = new Intent(this, ResetPasswordActivity.class);
         intent.putExtra("email", email);
         intent.putExtra("code", code);
@@ -182,6 +183,7 @@ public class VerificationCodeActivity extends AppCompatActivity {
     }
 
     private void handleResend() {
+        // TODO: Implement API call to resend verification code
         Toast.makeText(this, "Verification code resent to " + email, Toast.LENGTH_SHORT).show();
         resetCodeInputs();
     }

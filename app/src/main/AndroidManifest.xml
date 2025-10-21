@@ -30,28 +30,28 @@
 
         <!-- Authentication -->
         <activity
-            android:name=".views.auth.RoleSelectionActivity"
+            android:name=".views.auth.role.RoleSelectionActivity"
             android:exported="false" />
         <activity
-            android:name=".views.auth.LoginActivity"
+            android:name=".views.auth.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".views.auth.RegisterActivity"
+            android:name=".views.auth.register.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".views.auth.ForgotPasswordActivity"
+            android:name=".views.auth.password.ForgotPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".views.auth.VerificationCodeActivity"
+            android:name=".views.auth.password.ForgotPasswordVerificationActivity"
             android:exported="false" />
         <activity
-            android:name=".views.auth.ResetPasswordActivity"
+            android:name=".views.auth.password.ResetPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".views.auth.SetNewPasswordActivity"
+            android:name=".views.auth.password.SetNewPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".views.auth.ResetPasswordSuccessActivity"
+            android:name=".views.auth.password.ResetPasswordSuccessActivity"
             android:exported="false" />
 
         <!-- Main App -->

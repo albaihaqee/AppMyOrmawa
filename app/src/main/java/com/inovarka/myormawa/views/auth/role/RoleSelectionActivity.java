@@ -1,4 +1,4 @@
-package com.inovarka.myormawa.views.auth;
+package com.inovarka.myormawa.views.auth.role;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat;
 
 import com.google.android.material.button.MaterialButton;
 import com.inovarka.myormawa.R;
+import com.inovarka.myormawa.views.auth.login.LoginActivity;
 
 public class RoleSelectionActivity extends AppCompatActivity {
 
@@ -17,7 +18,7 @@ public class RoleSelectionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setWhiteStatusBar();
-        setContentView(R.layout.activity_selection_role);
+        setContentView(R.layout.activity_role_selection);
         initViews();
     }
 

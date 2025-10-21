@@ -1,4 +1,4 @@
-package com.inovarka.myormawa.views.auth;
+package com.inovarka.myormawa.views.auth.password;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -73,7 +73,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         Toast.makeText(this, "Verification code sent to " + email, Toast.LENGTH_SHORT).show();
 
         // Navigate to VerificationCodeActivity
-        Intent intent = new Intent(this, VerificationCodeActivity.class);
+        Intent intent = new Intent(this, ForgotPasswordVerificationActivity.class);
         intent.putExtra("email", email);
         startActivity(intent);
     }
