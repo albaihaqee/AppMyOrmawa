@@ -15,6 +15,7 @@ import androidx.core.content.ContextCompat;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.inovarka.myormawa.R;
+import com.inovarka.myormawa.views.dashboard.student.DashboardStudentActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -82,7 +83,13 @@ public class LoginActivity extends AppCompatActivity {
             String password = edtPassword.getText().toString().trim();
 
             // TODO: Implement API call
+            // Sementara langsung masuk ke Dashboard
             Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(this, DashboardStudentActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
         }
     }
 

@@ -60,6 +60,11 @@
             android:name=".views.auth.ResetPasswordSuccessActivity"
             android:exported="false" />
 
+        <!-- Dashboard -->
+        <activity
+            android:name=".views.dashboard.student.DashboardStudentActivity"
+            android:exported="false" />
+
         <!-- Main App -->
         <activity
             android:name=".MainActivity"
