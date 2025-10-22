@@ -26,20 +26,16 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setWhiteStatusBar();
         setContentView(R.layout.activity_login);
         initViews();
+        loadEmailFromIntent();
     }
 
     private void setWhiteStatusBar() {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         getWindow().setStatusBarColor(ContextCompat.getColor(this, android.R.color.white));
-
-        // Set ikon status bar menjadi gelap (untuk background putih)
-        getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-        );
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
     }
 
     private void initViews() {
@@ -48,16 +44,23 @@ public class LoginActivity extends AppCompatActivity {
         edtEmail = findViewById(R.id.edt_email);
         edtPassword = findViewById(R.id.edt_password);
 
-        // Auto-clear errors saat user mengetik
         edtEmail.addTextChangedListener(createErrorClearer(tilEmail));
         edtPassword.addTextChangedListener(createErrorClearer(tilPassword));
 
-        // Click listeners
         findViewById(R.id.btn_login).setOnClickListener(v -> handleLogin());
         findViewById(R.id.txt_register).setOnClickListener(v ->
                 startActivity(new Intent(this, RegisterActivity.class)));
         findViewById(R.id.txt_forgotpw).setOnClickListener(v ->
                 startActivity(new Intent(this, ForgotPasswordActivity.class)));
+    }
+
+    private void loadEmailFromIntent() {
+        // Get email dari Intent (dari RegisterSuccessActivity)
+        String email = getIntent().getStringExtra("registered_email");
+        if (email != null && !email.isEmpty()) {
+            edtEmail.setText(email);
+            edtPassword.requestFocus();
+        }
     }
 
     private TextWatcher createErrorClearer(TextInputLayout layout) {
@@ -66,12 +69,12 @@ public class LoginActivity extends AppCompatActivity {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
             @Override
-            public void afterTextChanged(Editable s) {}
-
-            @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 layout.setError(null);
             }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
         };
     }
 

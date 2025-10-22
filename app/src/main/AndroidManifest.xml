@@ -28,16 +28,26 @@
             android:name=".views.onboarding.OnboardingActivity"
             android:exported="false" />
 
-        <!-- Authentication -->
+        <!-- Authentication - Login & Role -->
         <activity
             android:name=".views.auth.role.RoleSelectionActivity"
             android:exported="false" />
         <activity
             android:name=".views.auth.login.LoginActivity"
             android:exported="false" />
+
+        <!-- Authentication - Register -->
         <activity
             android:name=".views.auth.register.RegisterActivity"
             android:exported="false" />
+        <activity
+            android:name=".views.auth.register.RegisterVerificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.auth.register.RegisterSuccessActivity"
+            android:exported="false" />
+
+        <!-- Authentication - Forgot Password -->
         <activity
             android:name=".views.auth.password.ForgotPasswordActivity"
             android:exported="false" />
