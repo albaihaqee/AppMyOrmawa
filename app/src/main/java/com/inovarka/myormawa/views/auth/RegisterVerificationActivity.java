@@ -1,4 +1,4 @@
-package com.inovarka.myormawa.views.auth.password;
+package com.inovarka.myormawa.views.auth;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,21 +19,25 @@ import androidx.core.content.ContextCompat;
 
 import com.inovarka.myormawa.R;
 
-public class ForgotPasswordVerificationActivity extends AppCompatActivity {
+public class RegisterVerificationActivity extends AppCompatActivity {
 
     private EditText[] codeInputs;
     private TextView txtEmailInfo;
     private ProgressBar progressLoading;
-    private String email;
+    private String email, nim, fullname, prodi;
     private boolean isVerifying = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setWhiteStatusBar();
-        setContentView(R.layout.activity_forgot_password_verification);
+        setContentView(R.layout.activity_register_verification);
 
         email = getIntent().getStringExtra("email");
+        nim = getIntent().getStringExtra("nim");
+        fullname = getIntent().getStringExtra("fullname");
+        prodi = getIntent().getStringExtra("prodi");
+
         initViews();
         setupCodeInputs();
     }
@@ -154,9 +158,10 @@ public class ForgotPasswordVerificationActivity extends AppCompatActivity {
 
         String code = getCodeFromInputs();
 
-        // TODO: Implement API call to verify code
+        // TODO: Implement API call to verify code and complete registration
+        // Send: email, nim, fullname, prodi, code
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            verifyCodeSuccess(code);
+            verifyCodeSuccess();
         }, 1500);
     }
 
@@ -168,12 +173,13 @@ public class ForgotPasswordVerificationActivity extends AppCompatActivity {
         return code.toString();
     }
 
-    private void verifyCodeSuccess(String code) {
+    private void verifyCodeSuccess() {
         progressLoading.setVisibility(View.GONE);
-        Intent intent = new Intent(this, ResetPasswordActivity.class);
+        Intent intent = new Intent(this, RegisterSuccessActivity.class);
+        // Pass email ke RegisterSuccessActivity via Intent Extra
         intent.putExtra("email", email);
-        intent.putExtra("code", code);
         startActivity(intent);
+        finishAffinity();
     }
 
     private void setCodeInputsEnabled(boolean enabled) {

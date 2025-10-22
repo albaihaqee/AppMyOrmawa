@@ -1,4 +1,4 @@
-package com.inovarka.myormawa.views.auth.register;
+package com.inovarka.myormawa.views.auth;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -24,23 +24,18 @@ import androidx.core.content.ContextCompat;
 
 import com.google.android.material.button.MaterialButton;
 import com.inovarka.myormawa.R;
-import com.inovarka.myormawa.views.auth.login.LoginActivity;
 
-public class RegisterSuccessActivity extends AppCompatActivity {
+public class ResetPasswordSuccessActivity extends AppCompatActivity {
 
     private View viewBlueOverlay, checkIconContainer;
     private ConstraintLayout layoutSuccessContent;
     private MaterialButton btnContinue;
-    private String registeredEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStatusBarColor(R.color.md_theme_light_primary, false);
-        setContentView(R.layout.activity_register_success);
-
-        // Get email dari RegisterVerificationActivity
-        registeredEmail = getIntent().getStringExtra("email");
+        setContentView(R.layout.activity_reset_password_success);
 
         initViews();
         setupBackPressHandler();
@@ -204,8 +199,6 @@ public class RegisterSuccessActivity extends AppCompatActivity {
                         .setDuration(100)
                         .withEndAction(() -> {
                             Intent intent = new Intent(this, LoginActivity.class);
-                            // Kirim email via Intent Extra (temporary)
-                            intent.putExtra("registered_email", registeredEmail);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
                             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);

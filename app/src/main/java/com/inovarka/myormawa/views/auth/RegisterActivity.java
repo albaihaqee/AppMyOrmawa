@@ -1,4 +1,4 @@
-package com.inovarka.myormawa.views.auth.register;
+package com.inovarka.myormawa.views.auth;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,6 @@ import androidx.core.content.ContextCompat;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.inovarka.myormawa.R;
-import com.inovarka.myormawa.views.auth.login.LoginActivity;
 
 public class RegisterActivity extends AppCompatActivity {
 

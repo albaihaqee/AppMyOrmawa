@@ -1,4 +1,4 @@
-package com.inovarka.myormawa.views.auth.role;
+package com.inovarka.myormawa.views.auth;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +10,6 @@ import androidx.core.content.ContextCompat;
 
 import com.google.android.material.button.MaterialButton;
 import com.inovarka.myormawa.R;
-import com.inovarka.myormawa.views.auth.login.LoginActivity;
 
 public class RoleSelectionActivity extends AppCompatActivity {
 

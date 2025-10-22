@@ -1,4 +1,4 @@
-package com.inovarka.myormawa.views.auth.password;
+package com.inovarka.myormawa.views.auth;
 
 import android.content.Intent;
 import android.os.Bundle;

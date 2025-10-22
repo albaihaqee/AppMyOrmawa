@@ -28,40 +28,36 @@
             android:name=".views.onboarding.OnboardingActivity"
             android:exported="false" />
 
-        <!-- Authentication - Login & Role -->
+        <!-- Authentication -->
         <activity
-            android:name=".views.auth.role.RoleSelectionActivity"
+            android:name=".views.auth.RoleSelectionActivity"
             android:exported="false" />
         <activity
-            android:name=".views.auth.login.LoginActivity"
-            android:exported="false" />
-
-        <!-- Authentication - Register -->
-        <activity
-            android:name=".views.auth.register.RegisterActivity"
+            android:name=".views.auth.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".views.auth.register.RegisterVerificationActivity"
+            android:name=".views.auth.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".views.auth.register.RegisterSuccessActivity"
-            android:exported="false" />
-
-        <!-- Authentication - Forgot Password -->
-        <activity
-            android:name=".views.auth.password.ForgotPasswordActivity"
+            android:name=".views.auth.RegisterVerificationActivity"
             android:exported="false" />
         <activity
-            android:name=".views.auth.password.ForgotPasswordVerificationActivity"
+            android:name=".views.auth.RegisterSuccessActivity"
             android:exported="false" />
         <activity
-            android:name=".views.auth.password.ResetPasswordActivity"
+            android:name=".views.auth.ForgotPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".views.auth.password.SetNewPasswordActivity"
+            android:name=".views.auth.ForgotPasswordVerificationActivity"
             android:exported="false" />
         <activity
-            android:name=".views.auth.password.ResetPasswordSuccessActivity"
+            android:name=".views.auth.ResetPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.auth.SetNewPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.auth.ResetPasswordSuccessActivity"
             android:exported="false" />
 
         <!-- Main App -->
