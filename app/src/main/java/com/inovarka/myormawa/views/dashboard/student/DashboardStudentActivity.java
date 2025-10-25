@@ -22,7 +22,7 @@ public class DashboardStudentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setWhiteStatusBar();
+        setGrayStatusBar();
         setContentView(R.layout.activity_dashboard_student);
         initViews();
         setupBottomNavigation();
@@ -33,9 +33,9 @@ public class DashboardStudentActivity extends AppCompatActivity {
         }
     }
 
-    private void setWhiteStatusBar() {
+    private void setGrayStatusBar() {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        getWindow().setStatusBarColor(ContextCompat.getColor(this, android.R.color.white));
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.md_theme_light_surfaceVariant));
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
     }
 
@@ -87,7 +87,7 @@ public class DashboardStudentActivity extends AppCompatActivity {
 
     private void setActiveTab(int position) {
         int primaryColor = ContextCompat.getColor(this, R.color.md_theme_light_primary);
-        int inactiveColor = ContextCompat.getColor(this, android.R.color.darker_gray);
+        int inactiveColor = ContextCompat.getColor(this, R.color.bottom_nav_icon_default); // FIXED
 
         // Reset all tabs
         updateTab(iconHome, labelHome, R.drawable.ic_home, inactiveColor, R.font.poppins_regular);
