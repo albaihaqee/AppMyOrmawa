@@ -63,9 +63,9 @@ public class HomeFragment extends Fragment {
 
     private void initBannerList() {
         bannerList = new ArrayList<>();
-        bannerList.add(new BannerModel(R.drawable.ic_email));
-        bannerList.add(new BannerModel(R.drawable.ic_home));
-        bannerList.add(new BannerModel(R.drawable.ic_calendar));
+        bannerList.add(new BannerModel(R.drawable.ill_banner_slide_1));
+        bannerList.add(new BannerModel(R.drawable.ill_banner_slide_2));
+        bannerList.add(new BannerModel(R.drawable.ill_banner_slide_3));
     }
 
     private void setupBannerAdapter() {

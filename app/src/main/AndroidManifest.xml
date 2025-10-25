@@ -12,22 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Myormawa">
 
-        <!-- LAUNCHER - TEMPORARY DIRECT TO DASHBOARD -->
+        <!-- LAUNCHER -->
         <activity
-            android:name=".views.dashboard.student.DashboardStudentActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="true">
+            android:name=".views.splash.SplashActivity"
+            android:exported="true"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!-- Splash (Disabled for now) -->
-        <activity
-            android:name=".views.splash.SplashActivity"
-            android:exported="false"
-            android:noHistory="true" />
 
         <!-- Onboarding -->
         <activity
@@ -64,6 +58,12 @@
             android:exported="false" />
         <activity
             android:name=".views.auth.ResetPasswordSuccessActivity"
+            android:exported="false" />
+
+        <!-- Dashboard -->
+        <activity
+            android:name=".views.dashboard.student.DashboardStudentActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
 
         <!-- Main App -->
