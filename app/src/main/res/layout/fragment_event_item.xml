@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/bg_event_item"
+    android:elevation="3dp"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="16:00 WIB"
+        android:textColor="#1A1A1A"
+        android:textStyle="bold"
+        android:textSize="13sp"
+        android:fontFamily="@font/poppins_semibold" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingStart="8dp">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Konser Art Of Manunggalan 11.0"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            android:textColor="#1A1A1A"
+            android:fontFamily="@font/poppins_semibold" />
+
+        <TextView
+            android:id="@+id/tvLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lapangan Hijau A3, Politeknik Negeri Jember"
+            android:textColor="#666"
+            android:textSize="11sp"
+            android:fontFamily="@font/poppins_regular" />
+    </LinearLayout>
+</LinearLayout>
