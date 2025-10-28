@@ -63,6 +63,7 @@
         <!-- Dashboard -->
         <activity
             android:name=".views.dashboard.student.DashboardStudentActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
 
         <!-- Main App -->
