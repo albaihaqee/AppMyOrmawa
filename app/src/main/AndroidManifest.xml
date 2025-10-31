@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Myormawa">
 
-        <!-- LAUNCHER -->
+        <!-- Splash (Kembali sebagai Launcher) -->
         <activity
             android:name=".views.splash.SplashActivity"
             android:exported="true"
@@ -22,6 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Dashboard (tidak lagi launcher) -->
+        <activity
+            android:name=".views.dashboard.student.DashboardStudentActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false" />
 
         <!-- Onboarding -->
         <activity
@@ -60,10 +66,9 @@
             android:name=".views.auth.ResetPasswordSuccessActivity"
             android:exported="false" />
 
-        <!-- Dashboard -->
+        <!-- Main App -->
         <activity
-            android:name=".views.dashboard.student.DashboardStudentActivity"
-            android:windowSoftInputMode="adjustPan"
+            android:name=".MainActivity"
             android:exported="false" />
 
         <meta-data

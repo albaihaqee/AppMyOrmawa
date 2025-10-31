@@ -215,7 +215,7 @@
         app:boxStrokeWidth="1dp"
         app:boxStrokeWidthFocused="2dp"
         app:hintTextColor="@color/text_input_hint"
-        app:startIconDrawable="@drawable/ic_graduation"
+        app:startIconDrawable="@drawable/ic_graduation_filled"
         app:startIconTint="@color/text_input_icon"
         app:errorEnabled="true"
         app:errorTextColor="#FF0000"
