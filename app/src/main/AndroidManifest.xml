@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -10,31 +14,32 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_logo_circle"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Myormawa">
+        android:theme="@style/Theme.Myormawa"
+        android:usesCleartextTraffic="true">
 
-        <!-- Splash (Kembali sebagai Launcher) -->
+        <!-- Splash Screen (tidak lagi launcher) -->
         <activity
             android:name=".views.splash.SplashActivity"
             android:exported="true"
-            android:noHistory="true">
+            android:noHistory="true" />
+
+        <!-- Dashboard Student (sekarang jadi launcher) -->
+        <activity
+            android:name=".views.dashboard.student.DashboardStudentActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!-- Dashboard (tidak lagi launcher) -->
-        <activity
-            android:name=".views.dashboard.student.DashboardStudentActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false" />
-
-        <!-- Onboarding -->
+        <!-- Onboarding Screen -->
         <activity
             android:name=".views.onboarding.OnboardingActivity"
             android:exported="false" />
 
-        <!-- Authentication -->
+        <!-- Authentication Activities -->
         <activity
             android:name=".views.auth.RoleSelectionActivity"
             android:exported="false" />
@@ -66,11 +71,43 @@
             android:name=".views.auth.ResetPasswordSuccessActivity"
             android:exported="false" />
 
-        <!-- Main App -->
+        <!-- Profile & Settings Activities -->
         <activity
-            android:name=".MainActivity"
+            android:name=".views.dashboard.student.DataPribadiActivity"
+            android:exported="false"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".views.dashboard.student.ChangeEmailActivity"
+            android:exported="false"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".views.dashboard.student.ChangePasswordOldActivity"
+            android:exported="false"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".views.dashboard.student.ChangePasswordNewActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"
+            tools:ignore="LockedOrientationActivity" />
+
+        <!-- Feature Activities -->
+        <activity
+            android:name=".views.dashboard.student.NotificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.dashboard.student.OprecActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.dashboard.student.EventActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.dashboard.student.CompetitionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.dashboard.student.ScholarshipActivity"
             android:exported="false" />
 
+        <!-- Font Metadata -->
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

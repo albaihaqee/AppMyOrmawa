@@ -87,7 +87,7 @@ public class DashboardStudentActivity extends AppCompatActivity {
 
     private void setActiveTab(int position) {
         int primaryColor = ContextCompat.getColor(this, R.color.md_theme_light_primary);
-        int inactiveColor = ContextCompat.getColor(this, R.color.bottom_nav_icon_default); // FIXED
+        int inactiveColor = ContextCompat.getColor(this, R.color.bottom_nav_icon_default);
 
         // Reset all tabs
         updateTab(iconHome, labelHome, R.drawable.ic_home, inactiveColor, R.font.poppins_regular);
@@ -117,5 +117,10 @@ public class DashboardStudentActivity extends AppCompatActivity {
         icon.setColorFilter(color);
         label.setTextColor(color);
         label.setTypeface(getResources().getFont(font));
+    }
+
+    public void navigateToOrganization() {
+        loadFragment(new OrganizationFragment());
+        setActiveTab(2); // Index 2 = Organization/UKM tab
     }
 }

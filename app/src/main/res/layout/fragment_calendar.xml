@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
+    android:orientation="vertical"
     android:background="#2C4EEF">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <!-- Header Section - FIXED (BLUE) -->
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Calendar"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Calendar"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp" />
+    <!-- Scrollable Content (WHITE BACKGROUND) -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@drawable/shape_calendar_background"
             android:paddingTop="24dp"
@@ -33,6 +35,7 @@
             android:paddingEnd="16dp"
             android:paddingBottom="16dp">
 
+            <!-- Month Navigation -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -70,6 +73,7 @@
                     app:tint="#000000" />
             </LinearLayout>
 
+            <!-- Day Labels -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -99,12 +103,15 @@
                     android:text="Sa" />
             </LinearLayout>
 
+            <!-- Calendar Grid -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_calendar_dates"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp" />
+                android:layout_marginBottom="16dp"
+                android:nestedScrollingEnabled="false" />
 
+            <!-- Legend -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -140,87 +147,75 @@
                     android:textSize="12sp" />
             </LinearLayout>
 
-            <androidx.cardview.widget.CardView
+            <!-- Selected Date Header -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp"
-                app:cardBackgroundColor="#FFFFFF"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
                 android:layout_marginBottom="16dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/ic_calendar"
+                    app:tint="#2C4EEF"
+                    android:layout_marginEnd="8dp" />
+
+                <TextView
+                    android:id="@+id/txt_selected_date"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="22 November 2025"
+                    android:textColor="#1A1A1A"
+                    android:textSize="14sp" />
+            </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:layout_marginBottom="16dp">
+            <!-- Empty State -->
+            <LinearLayout
+                android:id="@+id/layout_empty_event"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingVertical="32dp"
+                android:visibility="gone">
 
-                        <ImageView
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:src="@drawable/ic_calendar"
-                            app:tint="#2C4EEF"
-                            android:layout_marginEnd="8dp" />
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_calendar"
+                    android:layout_marginBottom="16dp"
+                    app:tint="#CCCCCC" />
 
-                        <TextView
-                            android:id="@+id/txt_selected_date"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:text="22 November 2025"
-                            android:textColor="#1A1A1A"
-                            android:textSize="14sp" />
-                    </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tidak ada kegiatan hari ini"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="#1A1A1A"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="4dp" />
 
-                    <LinearLayout
-                        android:id="@+id/layout_empty_event"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:paddingVertical="32dp"
-                        android:visibility="gone">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Belum ada event atau kegiatan yang dijadwalkan\npada tanggal ini. Tetap pantau kalender untuk\nupdate terbaru!"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="#8C8C8C"
+                    android:textSize="12sp"
+                    android:gravity="center"
+                    android:lineSpacingExtra="2dp" />
+            </LinearLayout>
 
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:src="@drawable/ic_calendar"
-                            android:layout_marginBottom="16dp"
-                            app:tint="#CCCCCC" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Tidak ada kegiatan hari ini"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:textColor="#1A1A1A"
-                            android:textSize="14sp"
-                            android:layout_marginBottom="4dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Belum ada event atau kegiatan yang dijadwalkan\npada tanggal ini. Tetap pantau kalender untuk\nupdate terbaru!"
-                            android:fontFamily="@font/poppins_regular"
-                            android:textColor="#8C8C8C"
-                            android:textSize="12sp"
-                            android:gravity="center"
-                            android:lineSpacingExtra="2dp" />
-                    </LinearLayout>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_events"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            <!-- Events List -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_events"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false" />
         </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>
