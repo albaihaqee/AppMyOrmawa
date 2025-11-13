@@ -15,7 +15,6 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.inovarka.myormawa.R;
-import com.inovarka.myormawa.views.auth.RegisterVerificationActivity;
 
 public class ChangeEmailActivity extends AppCompatActivity {
 
@@ -64,10 +63,17 @@ public class ChangeEmailActivity extends AppCompatActivity {
 
         btnContinue.setOnClickListener(v -> {
             String email = edtEmail.getText().toString().trim();
-            Intent intent = new Intent(this, RegisterVerificationActivity.class);
+
+            // TODO: Di sini nanti API call untuk request verification code
+            // API akan mengirim kode OTP ke email baru
+
+            // Setelah berhasil request OTP, navigasi ke ChangeEmailVerificationActivity
+            Intent intent = new Intent(this, ChangeEmailVerificationActivity.class);
             intent.putExtra("email", email);
-            intent.putExtra("from", "change_email");
             startActivity(intent);
+
+            // Finish activity ini supaya tidak bisa back ke form input email
+            finish();
         });
     }
 
@@ -84,6 +90,7 @@ public class ChangeEmailActivity extends AppCompatActivity {
             return;
         }
 
+        // Validasi domain email (sesuaikan dengan requirement aplikasi)
         boolean isValidDomain = email.endsWith("@gmail.com") ||
                 email.endsWith("@student.polije.ac.id");
         setButtonState(isValidDomain);
