@@ -24,7 +24,7 @@
             android:fontFamily="@font/poppins_semibold"
             android:text="Organisasi"
             android:textColor="#FFFFFF"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"

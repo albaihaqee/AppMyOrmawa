@@ -10,20 +10,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.inovarka.myormawa.R;
-import com.inovarka.myormawa.models.BannerModel;
+import com.inovarka.myormawa.models.Banner;
 
 import java.util.List;
 
 public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.BannerViewHolder> {
 
-    private List<BannerModel> bannerList;
+    private List<Banner> bannerList;
     private OnBannerClickListener listener;
 
     public interface OnBannerClickListener {
-        void onBannerClick(BannerModel banner, int position);
+        void onBannerClick(Banner banner, int position);
     }
 
-    public BannerAdapter(List<BannerModel> bannerList) {
+    public BannerAdapter(List<Banner> bannerList) {
         this.bannerList = bannerList;
     }
 
@@ -41,7 +41,7 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.BannerView
 
     @Override
     public void onBindViewHolder(@NonNull BannerViewHolder holder, int position) {
-        BannerModel banner = bannerList.get(position);
+        Banner banner = bannerList.get(position);
 
         // Load image
         if (banner.isFromUrl()) {

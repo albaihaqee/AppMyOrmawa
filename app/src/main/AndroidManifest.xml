@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -10,9 +14,10 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_logo_circle"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Myormawa">
+        android:theme="@style/Theme.Myormawa"
+        android:usesCleartextTraffic="true">
 
-        <!-- Splash (Kembali sebagai Launcher) -->
+        <!-- Splash Screen (Launcher) -->
         <activity
             android:name=".views.splash.SplashActivity"
             android:exported="true"
@@ -23,11 +28,23 @@
             </intent-filter>
         </activity>
 
-        <!-- Dashboard (tidak lagi launcher) -->
+        <!-- Dashboard Student -->
         <activity
             android:name=".views.dashboard.student.DashboardStudentActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- Change Email Flow -->
+        <activity
+            android:name=".views.dashboard.student.ChangeEmailSuccessActivity"
+            android:exported="true" />
+        <activity
+            android:name=".views.dashboard.student.ChangeEmailVerificationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".views.dashboard.student.ChangeEmailActivity"
+            android:exported="false"
+            tools:ignore="LockedOrientationActivity" />
 
         <!-- Onboarding -->
         <activity
@@ -66,14 +83,43 @@
             android:name=".views.auth.ResetPasswordSuccessActivity"
             android:exported="false" />
 
-        <!-- Main App -->
+        <!-- Profile & Settings -->
         <activity
-            android:name=".MainActivity"
+            android:name=".views.dashboard.student.DataPribadiActivity"
+            android:exported="false"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".views.dashboard.student.ChangePasswordOldActivity"
+            android:exported="false"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".views.dashboard.student.ChangePasswordNewActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"
+            tools:ignore="LockedOrientationActivity" />
+
+        <!-- Features -->
+        <activity
+            android:name=".views.dashboard.student.NotificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.dashboard.student.OprecActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.dashboard.student.EventActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.dashboard.student.CompetitionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.dashboard.student.ScholarshipActivity"
             android:exported="false" />
 
+        <!-- Font Metadata -->
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
     </application>
 
 </manifest>

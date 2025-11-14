@@ -2,369 +2,334 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F8F8F8"
-    android:fillViewport="true"
-    tools:context=".views.dashboard.student.HomeFragment">
+    android:fillViewport="true">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="24dp">
+        android:orientation="vertical"
+        android:paddingBottom="24dp"
+        android:background="#F8F8F8">
 
-        <!-- Header Section with Welcome Text and Notification Button -->
+        <!-- Header Section -->
         <LinearLayout
-            android:id="@+id/header_section"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toStartOf="@id/btn_notification"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/txt_welcome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_regular"
-                android:text="Welcome 👋"
-                android:textColor="#8C8C8C"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/txt_user_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_bold"
-                android:text="User Fullname"
-                android:textColor="#1A1A1A"
-                android:textSize="20sp" />
-        </LinearLayout>
-
-        <!-- Notification Button -->
-        <FrameLayout
-            android:id="@+id/btn_notification"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="24dp"
-            android:background="@drawable/shape_button_features"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_notification" />
-
-            <!-- Notification Badge -->
-            <View
-                android:id="@+id/notif_badge"
-                android:layout_width="10dp"
-                android:layout_height="10dp"
-                android:layout_gravity="end|top"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="12dp"
-                android:background="@drawable/shape_badge_notification"
-                android:visibility="visible" />
-        </FrameLayout>
-
-        <!-- Search Bar with Filter Button -->
-        <LinearLayout
-            android:id="@+id/search_section"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="24dp"
             android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/header_section">
+            android:paddingHorizontal="24dp"
+            android:paddingTop="24dp"
+            android:paddingBottom="8dp"
+            android:gravity="center_vertical"
+            android:background="#F8F8F8">
 
-            <!-- Search Field -->
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginEnd="12dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/shape_edittext_search"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp">
+                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_search" />
-
-                <EditText
-                    android:id="@+id/edt_search"
-                    android:layout_width="0dp"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:layout_weight="1"
-                    android:background="@null"
                     android:fontFamily="@font/poppins_regular"
-                    android:hint="Search organizations"
-                    android:textColor="#1A1A1A"
-                    android:textColorHint="#999999"
+                    android:text="Welcome 👋"
+                    android:textColor="#8C8C8C"
                     android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Hilmi Madani"
+                    android:textColor="#1A1A1A"
+                    android:textSize="20sp" />
             </LinearLayout>
 
-            <!-- Filter Button -->
             <FrameLayout
-                android:id="@+id/btn_filter"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/shape_button_filter">
+                android:id="@+id/btn_notification"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/shape_button_notification">
 
                 <ImageView
                     android:layout_width="22dp"
                     android:layout_height="22dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_filter"
-                    app:tint="@android:color/white" />
+                    android:src="@drawable/ic_notification"
+                    app:tint="#8C8C8C" />
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_gravity="end|top"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/shape_badge_notification" />
             </FrameLayout>
         </LinearLayout>
 
-        <!-- 5 Feature Buttons - Perfect Alignment -->
+        <!-- 4 Feature Buttons -->
         <LinearLayout
-            android:id="@+id/features_section"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="24dp"
             android:orientation="horizontal"
-            android:weightSum="5"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/search_section">
+            android:paddingHorizontal="24dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="16dp"
+            android:weightSum="4"
+            android:background="#F8F8F8">
 
-            <!-- Feature 1: Oprec (No padding start) -->
+            <!-- Oprec -->
             <LinearLayout
                 android:id="@+id/btn_oprec"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:orientation="vertical"
-                android:paddingEnd="8dp">
+                android:paddingEnd="6dp">
 
-                <FrameLayout
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:background="@drawable/shape_button_features">
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_profile"
-                        app:tint="@color/md_theme_light_onSecondary" />
-                </FrameLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="Oprec"
-                    android:textColor="#1A1A1A"
-                    android:textSize="11sp"
-                    android:gravity="center" />
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/shape_button_features"
+                    android:paddingVertical="12dp"
+                    android:paddingHorizontal="8dp">
+
+                    <FrameLayout
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/shape_feature_icon_blue">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_profile"
+                            app:tint="#FFFFFF" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Oprec"
+                        android:textColor="#1A1A1A"
+                        android:textSize="11sp" />
+                </LinearLayout>
             </LinearLayout>
 
-            <!-- Feature 2: Event -->
+            <!-- Event -->
             <LinearLayout
                 android:id="@+id/btn_event"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:orientation="vertical"
-                android:paddingStart="4dp"
-                android:paddingEnd="4dp">
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp">
 
-                <FrameLayout
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:background="@drawable/shape_button_features">
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_calendar"
-                        app:tint="@color/md_theme_light_onSecondary" />
-                </FrameLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="Event"
-                    android:textColor="#1A1A1A"
-                    android:textSize="11sp"
-                    android:gravity="center" />
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/shape_button_features"
+                    android:paddingVertical="12dp"
+                    android:paddingHorizontal="8dp">
+
+                    <FrameLayout
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/shape_feature_icon_blue">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_calendar"
+                            app:tint="#FFFFFF" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Event"
+                        android:textColor="#1A1A1A"
+                        android:textSize="11sp" />
+                </LinearLayout>
             </LinearLayout>
 
-            <!-- Feature 3: Kompetisi -->
+            <!-- Kompetisi -->
             <LinearLayout
                 android:id="@+id/btn_kompetisi"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:orientation="vertical"
-                android:paddingStart="4dp"
-                android:paddingEnd="4dp">
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp">
 
-                <FrameLayout
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:background="@drawable/shape_button_features">
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_organization"
-                        app:tint="@color/md_theme_light_onSecondary" />
-                </FrameLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="Kompetisi"
-                    android:textColor="#1A1A1A"
-                    android:textSize="11sp"
+                    android:orientation="vertical"
                     android:gravity="center"
-                    android:maxLines="1"
-                    android:ellipsize="end" />
+                    android:background="@drawable/shape_button_features"
+                    android:paddingVertical="12dp"
+                    android:paddingHorizontal="8dp">
+
+                    <FrameLayout
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/shape_feature_icon_blue">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_organization"
+                            app:tint="#FFFFFF" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Kompetisi"
+                        android:textColor="#1A1A1A"
+                        android:textSize="11sp"
+                        android:maxLines="1"
+                        android:ellipsize="end" />
+                </LinearLayout>
             </LinearLayout>
 
-            <!-- Feature 4: Pelatihan -->
-            <LinearLayout
-                android:id="@+id/btn_pelatihan"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:paddingStart="4dp"
-                android:paddingEnd="4dp">
-
-                <FrameLayout
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:background="@drawable/shape_button_features">
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_notification"
-                        app:tint="@color/md_theme_light_onSecondary" />
-                </FrameLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="Pelatihan"
-                    android:textColor="#1A1A1A"
-                    android:textSize="11sp"
-                    android:gravity="center"
-                    android:maxLines="1"
-                    android:ellipsize="end" />
-            </LinearLayout>
-
-            <!-- Feature 5: Beasiswa (No padding end) -->
+            <!-- Beasiswa -->
             <LinearLayout
                 android:id="@+id/btn_beasiswa"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:orientation="vertical"
-                android:paddingStart="8dp">
+                android:paddingStart="6dp">
 
-                <FrameLayout
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:background="@drawable/shape_button_features">
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_home"
-                        app:tint="@color/md_theme_light_onSecondary" />
-                </FrameLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="Beasiswa"
-                    android:textColor="#1A1A1A"
-                    android:textSize="11sp"
+                    android:orientation="vertical"
                     android:gravity="center"
-                    android:maxLines="1"
-                    android:ellipsize="end" />
+                    android:background="@drawable/shape_button_features"
+                    android:paddingVertical="12dp"
+                    android:paddingHorizontal="8dp">
+
+                    <FrameLayout
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/shape_feature_icon_blue">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_home"
+                            app:tint="#FFFFFF" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Beasiswa"
+                        android:textColor="#1A1A1A"
+                        android:textSize="11sp"
+                        android:maxLines="1"
+                        android:ellipsize="end" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
-        <!-- Banner Section dengan Shadow -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/banner_container"
-            android:layout_width="0dp"
+        <!-- Banner Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="24dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/features_section">
+            android:orientation="vertical"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="24dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="#FFFFFF">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/banner_viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:id="@+id/dots_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingTop="12dp" />
+        </LinearLayout>
+
+        <!-- Event Terbaru Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="24dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
 
-                <!-- ViewPager for Banner -->
-                <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/banner_viewpager"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp" />
-
-                <!-- Dots Indicator -->
-                <LinearLayout
-                    android:id="@+id/dots_container"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="12dp" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Event Terbaru"
+                    android:textColor="#1A1A1A"
+                    android:textSize="16sp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/txt_see_all_events"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Lihat semua"
+                    android:textColor="#2C4EEF"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Event List Container -->
+            <LinearLayout
+                android:id="@+id/container_popular_events"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </LinearLayout>
+    </LinearLayout>
 </ScrollView>

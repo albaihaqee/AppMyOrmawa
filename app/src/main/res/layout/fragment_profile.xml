@@ -7,22 +7,17 @@
     android:orientation="vertical"
     android:background="#2C4EEF">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <!-- Header Section -->
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="16dp"
-        android:paddingBottom="24dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Profile"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp" />
-    </LinearLayout>
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Profile"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -313,7 +308,8 @@
             android:layout_height="wrap_content"
             app:cardCornerRadius="12dp"
             app:cardElevation="2dp"
-            app:cardBackgroundColor="#FFFFFF">
+            app:cardBackgroundColor="#FFFFFF"
+            android:layout_marginBottom="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -338,5 +334,30 @@
                     android:textSize="14sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingVertical="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Versi Aplikasi 1.0.0"
+                android:textColor="#8C8C8C"
+                android:textSize="11sp"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="© 2025 Politeknik Negeri Jember"
+                android:textColor="#8C8C8C"
+                android:textSize="11sp" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
